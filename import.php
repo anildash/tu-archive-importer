@@ -88,7 +88,7 @@ function parseTweets($tweets){
 
 function insertTweet($tweet, $table_name){
 	if (!isset($existing[$tweet->id_str])) {
-		DB::insert($table_name, $parsed_tweet);
+		DB::insert($table_name, $tweet);
 	}
 }
 
