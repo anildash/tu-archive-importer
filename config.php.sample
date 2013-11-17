@@ -1,0 +1,35 @@
+<?php
+
+#**************YOU MUST UPDATE THESE OPTIONS BEFORE RUNNING******************
+$dry_run = true; //will do everything, but not insert new tweets. Change to false to do for real
+//You should do a dry run first, so you know what is going to happen
+
+DB::$user = 'root'; //please update with your mysql username
+DB::$password = ''; //and password
+
+$timezone = ''; //update to your time zone
+//php timezones can be found here: http://php.net/manual/en/timezones.php
+#**************END VARIABLES THAT MUST BE UPDATED****************************
+
+
+
+#**********OPTIONAL - YOU PROBABLY DON'T NEED TO CHANGE ANYTHING HERE *******
+
+//for no output at all, change both verbose and show_progress to false
+$verbose = true;
+$show_progress = true; // change this to false if the import is too noisy for you
+
+DB::$dbName = 'thinkup'; //only change if your database name is different
+DB::$host = 'localhost'; //only change if your mysql database is on a different host. Could try 127.0.0.1 if localhost doesn't work
+DB::$port = '3306';  //only change if your server is on a different port
+
+$directory = "tweets/";
+$directory_js_location = "data/js/tweets/*.js";
+
+$table_name = 'tu_posts'; // Change this if you changed your posts table prefix
+
+// Twitter user ID (number, can be found in the tweet archive)
+//We'll try to detect this automatically. Only uncomment this if you want to over-ride automatic detection
+//$userid = '7261402'; // if you specify one, change to your twitter userid number
+#***********END OPTIONAL OPTIONS***********************************************
+?>
