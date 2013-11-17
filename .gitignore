@@ -2,3 +2,4 @@ config.php
 archive/
 /vendor/
 tweets/
+.DS_Store

@@ -1,13 +1,14 @@
 #!/usr/bin/env php
 <?php
 
-require 'vendor/autoload.php';
+require 'meekrodb/db.class.php';
 
 /* Config */
 
 DB::$user = 'root';
 DB::$password = 'root';
 DB::$dbName = 'thinkup';
+DB::$host = 'localhost';
 
 // Change this if you changed your posts table prefix
 $table_name = 'tu_posts';
@@ -89,7 +90,7 @@ function parseTweets($tweets){
 }
 
 function insertTweet($tweet, $table_name, $existing){
-	if (!isset($existing[$tweet['post_id'])) {
+	if (!isset($existing[$tweet['post_id']])) {
 		DB::insert($table_name, $tweet);
 	}
 }
