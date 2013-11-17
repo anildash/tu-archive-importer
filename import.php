@@ -25,13 +25,15 @@ date_default_timezone_set($timezone);
 
 $tweet_files = glob($directory."data/js/tweets/*.js");
 
+$existing = getExistingTweets($table_name, $userid);
+	
 foreach($tweet_files as $file)
 {
 	$parsedFile = parseFile($file);
 	$parsedTweets = parseTweets($parsedFile);
 
 	foreach($parsedTweets as $tweet){
-		insertTweet($tweet, $table_name);
+		insertTweet($tweet, $table_name, $existing);
 	}
 
 }
@@ -86,13 +88,13 @@ function parseTweets($tweets){
 
 }
 
-function insertTweet($tweet, $table_name){
-	if (!isset($existing[$tweet->id_str])) {
+function insertTweet($tweet, $table_name, $existing){
+	if (!isset($existing[$tweet['post_id'])) {
 		DB::insert($table_name, $tweet);
 	}
 }
 
-function getExistingTweets($table_name){
+function getExistingTweets($table_name, $userid){
 	$existing = array();
 
 	$existingdb = DB::query("SELECT post_id FROM " . $table_name . " WHERE author_user_id=%i AND network='twitter'", $userid);
