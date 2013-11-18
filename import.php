@@ -79,7 +79,7 @@ function getTwitterUseridNumber($directory) {
 			$id_end_loc = strpos($id_string, "\",");
 			$final_id = substr($id_string, 0, $id_end_loc);
 			$twitter_userid_number = trim($final_id);
-			if (twitter_userid_number) {
+			if ($twitter_userid_number) {
 				return $twitter_userid_number;
 			} else {
 				return false;
