@@ -13,7 +13,7 @@ if (!(include 'config.php')) {
 if ($verbose && $dry_run) {
 	echo("*************************\n");
 	echo("Script is configed for a dry run. This will preview what will happen, but the database will not be modified.\n");
-	echo("To run for real, change \$dry_run to true in config.php\n");
+	echo("To run for real, change \$dry_run to false in config.php\n");
 	echo("*************************\n");
 }
 
@@ -47,7 +47,7 @@ foreach($tweet_files as $file)
 //finished the import
 
 if ($verbose) { echo($tweets_added." Tweets were added to thinkup, and ".$tweets_duplicate." tweets were ignored because they already exist\n");}
-if ($verbose && $dry_run) { echo("If you liked what you saw, change \$dry_run to true and run this again.\n"); }
+if ($verbose && $dry_run) { echo("If you liked what you saw, change \$dry_run to false and run this again.\n"); }
 
 exit(0); //completed successfully
 
